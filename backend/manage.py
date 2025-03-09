@@ -10,6 +10,7 @@ def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
     try:
+        # TODO: don't hardcode username & password
         uri = "mongodb+srv://cmd-f-2025:bmNuFkoCwhJk49AS@cluster0.mma1n.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
         # Create a new client and connect to the server
