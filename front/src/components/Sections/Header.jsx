@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import FullButton from "../Buttons/FullButton";
+
+import imgH from "../../images/happy.jpg";
+
 import { useNavigate } from "react-router-dom";
+
 
 export default function Header() {
   const navigate = useNavigate();
@@ -9,12 +13,9 @@ export default function Header() {
     <Wrapper id="home" className="container flexSpaceCenter">
       <LeftSide className="flexCenter">
         <div>
-          <h1 className="extraBold font60">We are a TEAM.</h1>
+          <h1 className="extraBold font60">Stay connected, stay secure.</h1>
           <HeaderP className="font13 semiBold">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum.
+          Our app keeps you safe with just a few taps. Whether you're living alone, traveling, or working late, we make sure you're always checked in. With real-time alerts and trusted contacts, you can focus on what matters most while we take care of your safety.
           </HeaderP>
           <BtnWrapper>
             <FullButton title="Get Started" onClick={navigate("/checkin")} />
@@ -23,12 +24,7 @@ export default function Header() {
       </LeftSide>
       <RightSide>
         <ImageWrapper>
-          <img
-            className="radius8"
-            src="https://placehold.co/426x607"
-            alt="img"
-            style={{ zIndex: 9 }}
-          />
+          <img src={imgH} alt="" style={{width: "100%"}} />
         </ImageWrapper>
         <GreyDiv className="lightBg"></GreyDiv>
       </RightSide>

@@ -1,9 +1,17 @@
 import React, { useEffect, useInsertionEffect, useState } from "react";
 import styled from "styled-components";
-import ProjectBox from "../Elements/ProjectBox";
 import FullButton from "../Buttons/FullButton";
 
 export default function Projects() {
+
+  const cards = [
+    { title: "Easy Setup", subtitle: "Quick Setup, Instant Peace of Mind", description: "Simply enter your email or phone number, set an emergency contact, and you're all set. It takes just a few taps!" },
+    { title: "Meeting Timer", subtitle: "Stay on Track with Regular Check-ins", description: "Set a schedule that works for you. If you forget, we’ll remind you." },
+    { title: "Instant Alerts", subtitle: "Always One Step Ahead", description: "If you don’t respond to your check-in, we’ll send an alert to your emergency contact, ensuring help is always close." },
+    { title: "Customizable", subtitle: "Tailored to Your Needs", description: "Set flexible check-in times and adjust preferences, giving you full control of your safety without overcomplicating things." }
+  ];
+
+
   const [data, setData] = useState();
   const json = async () => {
     const res = await (await fetch("backend/api/views.py")).json();
@@ -23,87 +31,42 @@ export default function Projects() {
     fetchData();
   }, []);
   console.log(json);
+
   return (
     <Wrapper id="projects">
       <div className="whiteBg">
         <div className="container">
           <HeaderInfo>
-            <h1 className="font40 extraBold">Lorem ipsum</h1>
+            <h1 className="font40 extraBold">Your Safety, Simplified</h1>
             <p className="font13">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-              nonumy eirmod tempor invidunt ut
-              <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua.
+              Stay connected and safe with customizable check-ins and instant alerts. 
+              Set it up in seconds, so help is always within reach.
             </p>
           </HeaderInfo>
-          <div className="row textCenter">
-            {Array.from({ length: 6 }, (_, idx) =>
-              idx % 3 === 0 ? (
-                <div className="row textCenter" key={idx}>
-                  {Array(3)
-                    .fill(null)
-                    .map((_, colIdx) => {
-                      const itemIndex = idx + colIdx;
-                      return itemIndex < 6 ? (
-                        <div
-                          className="col-xs-12 col-sm-4 col-md-4 col-lg-4"
-                          key={itemIndex}
-                        >
-                          <ProjectBox
-                            img="https://placehold.co/376x309"
-                            title="Lorem"
-                            text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-                            action={() => alert("clicked")}
-                          />
-                        </div>
-                      ) : null;
-                    })}
-                </div>
-              ) : null
-            )}
-          </div>
+          <CardsContainer>
+            {cards.map((card, index) => (
+              <TextBox key={index}>
+                <h3>{card.title}</h3>
+                <h4>{card.subtitle}</h4>
+                <p>{card.description}</p>
+              </TextBox>
+            ))}
+          </CardsContainer>
         </div>
       </div>
       <div className="lightBg">
         <div className="container">
-          <Advertising className="flexSpaceCenter">
-            <AddLeft>
-              <AddLeftInner>
-                <ImgWrapper className="flexCenter">
-                  <img
-                    className="radius8"
-                    src="https://placehold.co/426x607"
-                    alt="add"
-                  />
-                </ImgWrapper>
-              </AddLeftInner>
-            </AddLeft>
+          <Advertising>
             <AddRight>
-              <h4 className="font15 semiBold">A few words about company</h4>
-              <h2 className="font40 extraBold">A Study of Creativity</h2>
+              <h4 className="font15 semiBold">Why Choose Us?</h4>
+              <h2 className="font40 extraBold">Your Safety, Our Priority</h2>
               <p className="font12">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum.
+                With real-time check-ins and instant alerts, we help you stay safe no 
+                matter where you are. A simple setup, but a huge impact on your peace of mind.
               </p>
-              <ButtonsRow
-                className="flexNullCenter"
-                style={{ margin: "30px 0" }}
-              >
-                <div style={{ width: "190px" }}>
-                  <FullButton
-                    title="Get Started"
-                    action={() => alert("clicked")}
-                  />
-                </div>
-                <div style={{ width: "190px", marginLeft: "15px" }}>
-                  <FullButton
-                    title="Contact Us"
-                    action={() => alert("clicked")}
-                    border
-                  />
-                </div>
+              <ButtonsRow>
+                <FullButton title="Get Started" action={() => alert("Get Started Clicked")} />
+                <FullButton title="Contact Us" action={() => alert("Contact Clicked")} border />
               </ButtonsRow>
             </AddRight>
           </Advertising>
@@ -119,81 +82,72 @@ const Wrapper = styled.section`
   flex-direction: column;
   gap: 4rem;
 `;
+
 const HeaderInfo = styled.div`
   @media (max-width: 860px) {
     text-align: center;
   }
 `;
+
+const CardsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+
+  /* Adjusting layout for smaller screens */
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+`;
+
+const TextBox = styled.div`
+  background: #f5f5f5;
+  padding: 30px; /* Increased padding for a bit bigger card */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 23%; /* Default width for large screens, slightly adjusted to make it bigger */
+  
+  @media (max-width: 1024px) {
+    width: 48%; /* 2 boxes per row on medium screens */
+  }
+
+  @media (max-width: 768px) {
+    width: 100%; /* Full width on small screens */
+  }
+
+  h4 {
+    color: var(--secondary-color); /* Ensuring subtitle color is set to --secondary-color */
+    margin: 10px 0; /* Add margin for spacing between subtitle and description */
+  }
+
+  h3 {
+    margin-bottom: 15px; /* Add space between title and subtitle */
+  }
+
+  p {
+    margin-top: 15px; /* Add space between subtitle and description */
+  }
+`;
+
 const Advertising = styled.div`
   padding: 100px 0;
   margin: 100px 0;
   position: relative;
-  @media (max-width: 1160px) {
-    padding: 60px 0 40px 0;
-  }
-  @media (max-width: 860px) {
-    flex-direction: column;
-    padding: 0 0 30px 0;
-    margin: 80px 0 0px 0;
-  }
+  display: flex;
+  justify-content: center;
+  text-align: center;
 `;
-const ButtonsRow = styled.div`
-  @media (max-width: 860px) {
-    justify-content: space-between;
-  }
-`;
-const AddLeft = styled.div`
-  position: relative;
-  width: 50%;
-  p {
-    max-width: 475px;
-  }
-  @media (max-width: 860px) {
-    width: 80%;
-    order: 2;
-    text-align: center;
-    h2 {
-      line-height: 3rem;
-      margin: 15px 0;
-    }
-    p {
-      margin: 0 auto;
-    }
-  }
-`;
+
 const AddRight = styled.div`
-  width: 50%;
-  @media (max-width: 860px) {
-    width: 80%;
-    order: 2;
-  }
+  max-width: 600px;
 `;
-const AddLeftInner = styled.div`
-  width: 100%;
-  position: absolute;
-  top: -300px;
-  left: 0;
-  @media (max-width: 1190px) {
-    top: -250px;
-  }
-  @media (max-width: 920px) {
-    top: -200px;
-  }
-  @media (max-width: 860px) {
-    order: 1;
-    position: relative;
-    top: -60px;
-    left: 0;
-  }
-`;
-const ImgWrapper = styled.div`
-  width: 100%;
-  padding: 0 15%;
-  img {
-    width: 100%;
-    height: auto;
-  }
-  @media (max-width: 400px) {
-    padding: 0;
-  }
+
+const ButtonsRow = styled.div`
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
 `;

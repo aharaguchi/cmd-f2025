@@ -25,7 +25,9 @@ export default function Contact() {
                 className="font15 extraBold whiteColor"
                 style={{ marginLeft: "15px" }}
               >
+
                 SAFECHECK
+
               </h1>
             </Link>
             <StyleP className="whiteColor font13">

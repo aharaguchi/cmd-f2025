@@ -30,7 +30,7 @@ export default function TopNavbar() {
         style={y > 100 ? { height: "60px" } : { height: "80px" }}
       >
         <NavInner className="container flexSpaceCenter">
-          {/* Logo section with navigation to '/' */}
+
           <h1
             style={{ marginLeft: "15px" }}
             className="font20 extraBold pointer"
@@ -67,7 +67,7 @@ export default function TopNavbar() {
                 smooth={true}
                 offset={-80}
               >
-                Projects
+                Features
               </Link>
             </li>
             <li className="semiBold font15 pointer">
