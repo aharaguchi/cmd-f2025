@@ -25,15 +25,18 @@ const Cards = () => {
   ];
 
   return (
-    <div className="container mt-4">
-      <div className="row g-4 justify-content-center">
-        {cards.map((card, index) => (
-          <div key={index} className="col-12 col-sm-6 col-lg-3">
-            <CustomCard {...card} />
-          </div>
-        ))}
+    <div className="cards-container">
+      <div className="container mt-4">
+        <div className="row g-4 justify-content-center">
+          {cards.map((card, index) => (
+            <div key={index} className="col-12 col-sm-6 col-lg-3">
+              <CustomCard {...card} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
+    
   );
 };
 
