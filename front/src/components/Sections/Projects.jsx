@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect, useInsertionEffect, useState } from "react";
 import styled from "styled-components";
 import FullButton from "../Buttons/FullButton";
 
 export default function Projects() {
+
   const cards = [
     { title: "Easy Setup", subtitle: "Quick Setup, Instant Peace of Mind", description: "Simply enter your email or phone number, set an emergency contact, and you're all set. It takes just a few taps!" },
     { title: "Meeting Timer", subtitle: "Stay on Track with Regular Check-ins", description: "Set a schedule that works for you. If you forget, we’ll remind you." },
     { title: "Instant Alerts", subtitle: "Always One Step Ahead", description: "If you don’t respond to your check-in, we’ll send an alert to your emergency contact, ensuring help is always close." },
     { title: "Customizable", subtitle: "Tailored to Your Needs", description: "Set flexible check-in times and adjust preferences, giving you full control of your safety without overcomplicating things." }
   ];
+
+
+  const [data, setData] = useState();
+  const json = async () => {
+    const res = await (await fetch("backend/api/views.py")).json();
+    console.log(res);
+  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("/api/data/"); //
+        console.log(res);
+        setData(json);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  console.log(json);
 
   return (
     <Wrapper id="projects">

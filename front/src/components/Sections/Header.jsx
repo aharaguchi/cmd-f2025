@@ -1,9 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import FullButton from "../Buttons/FullButton";
+
 import imgH from "../../images/happy.jpg";
 
+import { useNavigate } from "react-router-dom";
+
+
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <Wrapper id="home" className="container flexSpaceCenter">
       <LeftSide className="flexCenter">
@@ -13,7 +18,7 @@ export default function Header() {
           Our app keeps you safe with just a few taps. Whether you're living alone, traveling, or working late, we make sure you're always checked in. With real-time alerts and trusted contacts, you can focus on what matters most while we take care of your safety.
           </HeaderP>
           <BtnWrapper>
-            <FullButton title="Get Started" />
+            <FullButton title="Get Started" onClick={navigate("/checkin")} />
           </BtnWrapper>
         </div>
       </LeftSide>

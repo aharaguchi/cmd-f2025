@@ -21,17 +21,18 @@ export default function Contact() {
               smooth={true}
               offset={-80}
             >
-              <LogoIcon />
               <h1
                 className="font15 extraBold whiteColor"
                 style={{ marginLeft: "15px" }}
               >
-                SafeCheck
+
+                SAFECHECK
+
               </h1>
             </Link>
             <StyleP className="whiteColor font13">
               © {getCurrentYear()} -{" "}
-              <span className="purpleColor font13">Name</span> All Right
+              <span className="purpleColor font13">SAFECHECK</span> All Right
               Reserved
             </StyleP>
 
@@ -62,9 +63,4 @@ const StyleP = styled.p`
   @media (max-width: 550px) {
     margin: 20px 0;
   }
-`;
-const LogoIcon = styled.div`
-  width: 40px;
-  height: 40px;
-  background-color: gray;
 `;
