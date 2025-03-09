@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import FullButton from "../Buttons/FullButton";
+import imgH from "../../images/happy.jpg";
 
 export default function Header() {
   return (
@@ -18,12 +19,7 @@ export default function Header() {
       </LeftSide>
       <RightSide>
         <ImageWrapper>
-          <img
-            className="radius8"
-            src="../../images/happy.jpg"
-            alt="img"
-            style={{ zIndex: 9 }}
-          />
+          <img src={imgH} alt="" style={{width: "100%"}} />
         </ImageWrapper>
         <GreyDiv className="lightBg"></GreyDiv>
       </RightSide>
