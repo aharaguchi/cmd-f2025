@@ -1,4 +1,6 @@
 # cmd-f2025
+## This repo is being locked to preserve the state it was in at the end of cmd-f 2025. I'll fork this repo for any work done after this.
+
 ## Concept 
 [Write-up (google docs)](https://discord.com/channels/@me/1348033250752331916/1348033283803320376)
 [Use Case Diagram](https://discord.com/channels/@me/1348033250752331916/1348049147177209940)
